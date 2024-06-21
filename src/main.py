@@ -1,11 +1,11 @@
 import os, shutil
-from generate_content import generate_page
+from generate_content import generate_pages_recursive
 
 def main():
-    #if os.path.exists("./public"):
-    #    shutil.rmtree("./public")
-    #copy_directory("./static", "./public")
-    generate_page("./content/index.md", "./template.html", "./public/index.html")
+    if os.path.exists("./public"):
+        shutil.rmtree("./public")
+    copy_directory("./static", "./public")
+    generate_pages_recursive("./content/", "./template.html", "./public/")
 
 
 def copy_directory(source, destination):
